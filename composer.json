@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "PHPUnitDesktopNotifier\\": "src/"
+            "YoannRenard\\PHPUnitAnnotation\\": "src/"
         }
     },
     "config": {
@@ -19,7 +19,6 @@
     },
     "require": {
         "php": ">=5.3",
-        "phpunit/phpunit": ">=3.6.10",
-        "mockery/mockery": "^0.9.5"
+        "phpunit/phpunit": ">=3.6.10"
     }
 }
