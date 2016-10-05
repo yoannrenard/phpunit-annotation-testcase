@@ -1,0 +1,25 @@
+{
+    "name": "yoannrenard/phpunit-annotation-testcase",
+    "description": "Use simple annotation to mock the world",
+    "type": "library, phpunit",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yoann RENARD",
+            "email": "renard.yoann@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PHPUnitDesktopNotifier\\": "src/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "require": {
+        "php": ">=5.3",
+        "phpunit/phpunit": ">=3.6.10",
+        "mockery/mockery": "^0.9.5"
+    }
+}
