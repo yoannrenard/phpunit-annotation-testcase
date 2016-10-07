@@ -2,13 +2,15 @@
 
 namespace YoannRenard\PHPUnitAnnotation\TestCase\Mock;
 
+use Prophecy\Prophecy\ObjectProphecy;
 use YoannRenard\PHPUnitAnnotation\TestCase\PHPUnit_Annotation_TestCase;
 
 class MyClassTest extends PHPUnit_Annotation_TestCase
 {
     /**
+     * @var  Foo|ObjectProphecy
+     *
      * @mock \YoannRenard\PHPUnitAnnotation\TestCase\Mock\Foo
-     * @var  Foo
      */
     protected $fooMock;
 
