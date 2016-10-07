@@ -14,4 +14,12 @@ class Bar
     {
         $this->foo = $foo;
     }
+
+    /**
+     * @return Foo
+     */
+    public function getFoo()
+    {
+        return $this->foo;
+    }
 }

@@ -7,10 +7,10 @@ use YoannRenard\PHPUnitAnnotation\TestCase\PHPUnit_Annotation_TestCase;
 class MyClassTest extends PHPUnit_Annotation_TestCase
 {
     /**
-     * @mock Foo
+     * @mock \YoannRenard\PHPUnitAnnotation\TestCase\Mock\Foo
      * @var  Foo
      */
-    protected $foo;
+    protected $fooMock;
 
     /** @var Bar */
     protected $bar;
@@ -18,9 +18,20 @@ class MyClassTest extends PHPUnit_Annotation_TestCase
     /**
      * @inheritdoc
      */
-    protected function setUp() {
+    protected function setUp()
+    {
         parent::setUp();
 
-        $this->bar = new Bar($this->foo);
+        $this->bar = new Bar($this->fooMock->reveal());
+    }
+
+    /**
+     * @test
+     */
+    public function itTest()
+    {
+        $this->fooMock->__toString()->willReturn('toto');
+
+        $this->assertEquals('toto', $this->bar->getFoo()->__toString());
     }
 }
