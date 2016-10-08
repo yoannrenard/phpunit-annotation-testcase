@@ -1,5 +1,7 @@
 # phpunit-annotation-testcase
 
+[![Build Status](https://travis-ci.org/yoannrenard/phpunit-annotation-testcase.svg?branch=master)](https://travis-ci.org/yoannrenard/phpunit-annotation-testcase)
+
 Use simple annotations to mock the world!
 
 ## Installing Dependencies
