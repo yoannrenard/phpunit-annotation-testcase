@@ -13,7 +13,7 @@ $> composer require --dev yoannrenard/phpunit-annotation-testcase
 ## Requirements
 
 * [Composer][composer]
-* PHP >=5.3
+* PHP >=5.6
 
 ## Run tests
 
