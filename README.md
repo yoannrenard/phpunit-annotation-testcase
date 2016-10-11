@@ -38,18 +38,12 @@ $> bin/phpunit
          */
         protected $fooMock;
 
-        /** @var Bar */
-        protected $bar;
-
         /**
-         * @inheritdoc
+         * @var Bar
+         *
+         * @factory("\YoannRenard\PHPUnitAnnotation\TestCase\Mock\Bar", params={"fooMock"})
          */
-        protected function setUp()
-        {
-            parent::setUp();
-
-            $this->bar = new Bar($this->fooMock->reveal());
-        }
+        protected $bar;
     }
 
 will replace

@@ -12,28 +12,31 @@ class MyClassTest extends PHPUnit_Annotation_TestCase
      *
      * @mock \YoannRenard\PHPUnitAnnotation\TestCase\Mock\Foo
      */
-    protected $fooMock;
-
-    /** @var Bar */
-    protected $bar;
+    protected $foo1Mock;
 
     /**
-     * @inheritdoc
+     * @var  Foo|ObjectProphecy
+     *
+     * @mock \YoannRenard\PHPUnitAnnotation\TestCase\Mock\Foo
      */
-    protected function setUp()
-    {
-        parent::setUp();
+    protected $foo2Mock;
 
-        $this->bar = new Bar($this->fooMock->reveal());
-    }
+    /**
+     * @var Bar
+     *
+     * @factory("\YoannRenard\PHPUnitAnnotation\TestCase\Mock\Bar", params={"foo1Mock", "foo2Mock"})
+     */
+    protected $bar;
 
     /**
      * @test
      */
     public function itTest()
     {
-        $this->fooMock->__toString()->willReturn('toto');
+        $this->foo1Mock->__toString()->willReturn('toto');
+        $this->foo2Mock->__toString()->willReturn('tata');
 
+        $this->assertEquals('dummy', $this->bar->returnDummy());
         $this->assertEquals('toto', $this->bar->getFoo()->__toString());
     }
 }
