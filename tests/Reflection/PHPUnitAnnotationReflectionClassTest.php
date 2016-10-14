@@ -1,11 +1,11 @@
 <?php
 
-namespace YoannRenard\PHPUnitAnnotation\TestCase;
+namespace YoannRenard\PHPUnitAnnotation\Reflection;
 
-class PHPUnit_Annotation_TestCaseTest extends \PHPUnit_Framework_TestCase
+class PHPUnitAnnotationReflectionClassTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var PHPUnit_Annotation_TestCase */
-    protected $phpUnitAnnotationTestCase;
+    /** @var PHPUnitAnnotationReflectionClass */
+    protected $phpUnitAnnotationReflectionClass;
 
     /**
      * @inheritdoc
@@ -14,7 +14,9 @@ class PHPUnit_Annotation_TestCaseTest extends \PHPUnit_Framework_TestCase
     {
         parent::setUp();
 
-        $this->phpUnitAnnotationTestCase = new PHPUnit_Annotation_TestCase();
+        $reflectedClass = $this->prophesize(\ReflectionClass::class);
+
+        $this->phpUnitAnnotationReflectionClass = new PHPUnitAnnotationReflectionClass($reflectedClass->reveal());
     }
 
     /**
@@ -169,7 +171,7 @@ class PHPUnit_Annotation_TestCaseTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             $expectedResult,
-            $this->phpUnitAnnotationTestCase->parseFactoryAnnotations($docblock)
+            $this->phpUnitAnnotationReflectionClass->parseFactoryAnnotations($docblock)
         );
     }
 
@@ -179,7 +181,7 @@ class PHPUnit_Annotation_TestCaseTest extends \PHPUnit_Framework_TestCase
      */
     public function itThrowsAnExceptionAsTheAnnotationIsSetTwice()
     {
-        $this->phpUnitAnnotationTestCase->parseFactoryAnnotations(<<<EOF
+        $this->phpUnitAnnotationReflectionClass->parseFactoryAnnotations(<<<EOF
 /**
  * @var toto
  *
@@ -194,6 +196,6 @@ class PHPUnit_Annotation_TestCaseTest extends \PHPUnit_Framework_TestCase
  * })
  */
 EOF
-);
+        );
     }
 }
