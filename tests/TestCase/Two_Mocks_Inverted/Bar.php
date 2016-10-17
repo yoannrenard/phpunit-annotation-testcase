@@ -1,6 +1,6 @@
 <?php
 
-namespace YoannRenard\PHPUnitAnnotation\TestCase\Mock;
+namespace YoannRenard\PHPUnitAnnotation\TestCase\Two_Mocks_Inverted;
 
 class Bar
 {
@@ -20,16 +20,8 @@ class Bar
         $this->foo2 = $foo2;
     }
 
-    public function returnDummy()
+    public function dummy()
     {
-        return 'dummy';
-    }
-
-    /**
-     * @return Foo
-     */
-    public function getFoo()
-    {
-        return $this->foo1;
+        return $this->foo1->dummy().' '.$this->foo2->dummy();
     }
 }

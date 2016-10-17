@@ -1,13 +1,13 @@
 <?php
 
-namespace YoannRenard\PHPUnitAnnotation\TestCase\Mock;
+namespace YoannRenard\PHPUnitAnnotation\TestCase\Two_Mocks;
 
 class Foo
 {
     /**
      * @return string
      */
-    public function __toString()
+    public function dummy()
     {
         return 'I am a Foo instance';
     }
