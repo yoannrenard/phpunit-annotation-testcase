@@ -16,7 +16,7 @@ class PHPUnitAnnotationReflectionClass
     }
 
     /**
-     * @return array
+     * @return PHPUnitMockReflectionProperty[]
      */
     public function getMockProperties()
     {
@@ -33,16 +33,16 @@ class PHPUnitAnnotationReflectionClass
     }
 
     /**
-     * @return array
+     * @return PHPUnitFactoryReflectionProperty[]
      */
     public function getFactoryProperties()
     {
-        $annotation = [];
+        $annotationList = [];
         foreach ($this->reflectedClass->getProperties() as $property) {
             $factoryAnnotation = $this->parseFactoryAnnotations($property->getDocComment());
 
             if (!empty($factoryAnnotation)) {
-                $annotation[] = new PHPUnitFactoryReflectionProperty(
+                $annotationList[] = new PHPUnitFactoryReflectionProperty(
                     $property->getName(),
                     $factoryAnnotation['className'],
                     $factoryAnnotation['params']
@@ -50,7 +50,7 @@ class PHPUnitAnnotationReflectionClass
             }
         }
 
-        return $annotation;
+        return $annotationList;
     }
 
     /**
