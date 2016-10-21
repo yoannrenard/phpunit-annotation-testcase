@@ -16,7 +16,7 @@ class MyClassTest extends PHPUnit_Annotation_TestCase
     /**
      * @test
      */
-    public function itReturnsAConcatenatedStringOfFoo()
+    public function itReturnsASpecificString()
     {
         $this->assertEquals('I am a Bar instance', $this->bar->dummy());
     }
