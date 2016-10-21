@@ -32,7 +32,7 @@ class MyClassTest extends PHPUnit_Annotation_TestCase
     /**
      * @test
      */
-    public function itReturnsAConcatenatedStringOfFoo()
+    public function itReturnsASpecificString()
     {
         $this->fooMock->dummy()->willReturn('Foo');
 
