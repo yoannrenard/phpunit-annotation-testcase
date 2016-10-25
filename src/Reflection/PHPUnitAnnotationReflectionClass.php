@@ -104,7 +104,7 @@ class PHPUnitAnnotationReflectionClass
     {
         return $this->parseAnnotations(
             $docBlock,
-            '/@factory\("(?P<className>[\/\\\\A-Za-z0-9_-]+?)"(, params=(?P<params>[{}, \"\n\t*A-Za-z0-9_-]*))?\)?[ \t]*\r?$/m',
+            '/@factory\("(?P<className>[\/\\\\A-Za-z0-9_-]+?)"(, params={(?P<params>[, \"\n\t*A-Za-z0-9_-]*)})?\)?[ \t]*\r?$/m',
             function (array $matches) {
                 if (1 != count($matches[0])) {
                     throw new \InvalidArgumentException();
@@ -115,7 +115,7 @@ class PHPUnitAnnotationReflectionClass
                 $params = null;
                 if (!empty($matches['params'][0])) {
                     $params = $matches['params'][0];
-                    foreach (['*', ' ', "\n", "\t", "\r", '{', '}', '"'] as $char) {
+                    foreach (['*', ' ', "\n", "\t", "\r", '"'] as $char) {
                         $params = str_replace($char, '', $params);
                     }
                 }
