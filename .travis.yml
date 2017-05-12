@@ -9,7 +9,6 @@ php:
 
 cache:
     directories:
-        - $HOME/.composer/cache/
         - vendor
 
 install:
