@@ -2,7 +2,9 @@
 
 namespace YoannRenard\PHPUnitAnnotation\Reflection;
 
-class PHPUnitAnnotationReflectionClassTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class PHPUnitAnnotationReflectionClassTest extends TestCase
 {
     /** @var PHPUnitAnnotationReflectionClass */
     protected $phpUnitAnnotationReflectionClass;

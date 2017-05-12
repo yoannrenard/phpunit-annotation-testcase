@@ -27,9 +27,9 @@ $> bin/phpunit
 
     <?php
     use Prophecy\Prophecy\ObjectProphecy;
-    use YoannRenard\PHPUnitAnnotation\TestCase\PHPUnit_Annotation_TestCase;
+    use YoannRenard\PHPUnitAnnotation\TestCase\AnnotationTestCase;
 
-    class MyClassTest extends PHPUnit_Annotation_TestCase
+    class MyClassTest extends AnnotationTestCase
     {
         /**
          * @var  Foo|ObjectProphecy
@@ -50,9 +50,9 @@ will replace
 
     <?php
     use Prophecy\Prophecy\ObjectProphecy;
-    use YoannRenard\PHPUnitAnnotation\TestCase\PHPUnit_Annotation_TestCase;
+    use PHPUnit\Framework\TestCase;
 
-    class MyClassTest extends PHPUnit_Annotation_TestCase
+    class MyClassTest extends TestCase
     {
         /**
          * @var Foo|ObjectProphecy
