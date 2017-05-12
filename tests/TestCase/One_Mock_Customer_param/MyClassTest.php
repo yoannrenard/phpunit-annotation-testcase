@@ -3,9 +3,9 @@
 namespace YoannRenard\PHPUnitAnnotation\TestCase\One_Mock_Customer_param;
 
 use Prophecy\Prophecy\ObjectProphecy;
-use YoannRenard\PHPUnitAnnotation\TestCase\PHPUnit_Annotation_TestCase;
+use YoannRenard\PHPUnitAnnotation\TestCase\AnnotationTestCase;
 
-class MyClassTest extends PHPUnit_Annotation_TestCase
+class MyClassTest extends AnnotationTestCase
 {
     /**
      * @var  Foo|ObjectProphecy
