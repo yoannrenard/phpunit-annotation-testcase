@@ -4,24 +4,16 @@ namespace YoannRenard\PHPUnitAnnotation\Reflection;
 
 class PHPUnitMockReflectionProperty extends AbstractPHPUnitReflectionProperty
 {
-    /** @var string */
-    protected $mockNamespace;
+    protected string $mockNamespace;
 
-    /**
-     * @param string $name
-     * @param string $mockNamespace
-     */
-    public function __construct($name, $mockNamespace)
+    public function __construct(string $name, string $mockNamespace)
     {
         parent::__construct($name);
 
         $this->mockNamespace = $mockNamespace;
     }
 
-    /**
-     * @return string
-     */
-    public function getMockNamespace()
+    public function getMockNamespace(): string
     {
         return $this->mockNamespace;
     }

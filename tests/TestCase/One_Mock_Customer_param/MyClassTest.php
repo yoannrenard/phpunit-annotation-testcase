@@ -8,16 +8,13 @@ use YoannRenard\PHPUnitAnnotation\TestCase\AnnotationTestCase;
 class MyClassTest extends AnnotationTestCase
 {
     /**
-     * @var  Foo|ObjectProphecy
+     * @var Foo|ObjectProphecy
      *
      * @mock \YoannRenard\PHPUnitAnnotation\TestCase\One_Mock_Customer_param\Foo
      */
     protected $fooMock;
 
-    /**
-     * @var Bar
-     */
-    protected $bar;
+    protected Bar $bar;
 
     /**
      * @inheritdoc
@@ -29,9 +26,7 @@ class MyClassTest extends AnnotationTestCase
         $this->bar = new Bar($this->fooMock->reveal(), 'my suffix');
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function itReturnsASpecificString()
     {
         $this->fooMock->dummy()->willReturn('Foo');

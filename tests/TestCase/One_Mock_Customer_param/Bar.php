@@ -4,26 +4,16 @@ namespace YoannRenard\PHPUnitAnnotation\TestCase\One_Mock_Customer_param;
 
 class Bar
 {
-    /** @var Foo */
-    protected $foo;
+    protected Foo $foo;
+    protected string $suffix;
 
-    /** @var string */
-    protected $suffix;
-
-    /**
-     * @param Foo    $foo
-     * @param string $suffix
-     */
-    public function __construct(Foo $foo, $suffix)
+    public function __construct(Foo $foo, string $suffix)
     {
         $this->foo    = $foo;
         $this->suffix = $suffix;
     }
 
-    /**
-     * @return string
-     */
-    public function dummy()
+    public function dummy(): string
     {
         return sprintf('%s %s', $this->foo->dummy(), $this->suffix);
     }

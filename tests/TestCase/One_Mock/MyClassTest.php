@@ -8,22 +8,18 @@ use YoannRenard\PHPUnitAnnotation\TestCase\AnnotationTestCase;
 class MyClassTest extends AnnotationTestCase
 {
     /**
-     * @var  Foo|ObjectProphecy
+     * @var Foo|ObjectProphecy
      *
      * @mock \YoannRenard\PHPUnitAnnotation\TestCase\One_Mock\Foo
      */
     protected $fooMock;
 
     /**
-     * @var Bar
-     *
      * @factory("\YoannRenard\PHPUnitAnnotation\TestCase\One_Mock\Bar", params={"fooMock"})
      */
-    protected $bar;
+    protected Bar $bar;
 
-    /**
-     * @test
-     */
+    /** @test */
     public function itReturnsASpecificString()
     {
         $this->fooMock->dummy()->willReturn('Foo');

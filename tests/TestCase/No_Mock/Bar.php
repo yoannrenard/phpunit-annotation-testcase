@@ -4,10 +4,7 @@ namespace YoannRenard\PHPUnitAnnotation\TestCase\No_Mock;
 
 class Bar
 {
-    /**
-     * @return string
-     */
-    public function dummy()
+    public function dummy(): string
     {
         return 'I am a Bar instance';
     }

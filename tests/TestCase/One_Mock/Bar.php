@@ -4,8 +4,7 @@ namespace YoannRenard\PHPUnitAnnotation\TestCase\One_Mock;
 
 class Bar
 {
-    /** @var Foo */
-    protected $foo;
+    protected Foo $foo;
 
     /**
      * @param Foo $foo
@@ -15,10 +14,7 @@ class Bar
         $this->foo = $foo;
     }
 
-    /**
-     * @return string
-     */
-    public function dummy()
+    public function dummy(): string
     {
         return $this->foo->dummy();
     }

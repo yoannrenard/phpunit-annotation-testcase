@@ -4,18 +4,15 @@ namespace YoannRenard\PHPUnitAnnotation\Reflection;
 
 class PHPUnitFactoryReflectionProperty extends AbstractPHPUnitReflectionProperty
 {
-    /** @var string */
-    protected $className;
+    protected string $className;
 
     /** @var string[] */
-    protected $paramList;
+    protected array $paramList;
 
     /**
-     * @param string   $name
-     * @param string   $className
      * @param string[] $paramList
      */
-    public function __construct($name, $className, array $paramList = [])
+    public function __construct(string $name, string $className, array $paramList = [])
     {
         parent::__construct($name);
 
@@ -23,10 +20,7 @@ class PHPUnitFactoryReflectionProperty extends AbstractPHPUnitReflectionProperty
         $this->paramList = $paramList;
     }
 
-    /**
-     * @return string
-     */
-    public function getClassName()
+    public function getClassName(): string
     {
         return $this->className;
     }
@@ -34,7 +28,7 @@ class PHPUnitFactoryReflectionProperty extends AbstractPHPUnitReflectionProperty
     /**
      * @return string[]
      */
-    public function getParamList()
+    public function getParamList(): array
     {
         return $this->paramList;
     }

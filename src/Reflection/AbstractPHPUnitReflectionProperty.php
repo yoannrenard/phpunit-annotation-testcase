@@ -4,21 +4,14 @@ namespace YoannRenard\PHPUnitAnnotation\Reflection;
 
 abstract class AbstractPHPUnitReflectionProperty
 {
-    /** @var string */
-    protected $name;
+    protected string $name;
 
-    /**
-     * @param string $name
-     */
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->name = $name;
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }

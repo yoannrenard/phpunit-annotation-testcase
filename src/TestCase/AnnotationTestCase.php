@@ -10,7 +10,7 @@ use YoannRenard\PHPUnitAnnotation\Reflection\PHPUnitMockReflectionProperty;
 class AnnotationTestCase extends TestCase
 {
     /** @var PHPUnitAnnotationReflectionClass[] */
-    protected static $propertyAnnotationList;
+    protected static array $propertyAnnotationList;
 
     /**
      * @inheritdoc

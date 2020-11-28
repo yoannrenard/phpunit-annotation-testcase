@@ -4,12 +4,8 @@ namespace YoannRenard\PHPUnitAnnotation\Reflection;
 
 class PHPUnitAnnotationReflectionClass
 {
-    /** @var \ReflectionClass */
-    protected $reflectedClass;
+    protected \ReflectionClass $reflectedClass;
 
-    /**
-     * @param \ReflectionClass $reflectedClass
-     */
     public function __construct(\ReflectionClass $reflectedClass)
     {
         $this->reflectedClass = $reflectedClass;
@@ -18,7 +14,7 @@ class PHPUnitAnnotationReflectionClass
     /**
      * @return PHPUnitMockReflectionProperty[]
      */
-    public function getMockProperties()
+    public function getMockProperties(): array
     {
         $annotation = [];
         foreach ($this->reflectedClass->getProperties() as $property) {
@@ -35,7 +31,7 @@ class PHPUnitAnnotationReflectionClass
     /**
      * @return PHPUnitFactoryReflectionProperty[]
      */
-    public function getFactoryProperties()
+    public function getFactoryProperties(): array
     {
         $annotationList = [];
         foreach ($this->reflectedClass->getProperties() as $property) {
@@ -53,14 +49,7 @@ class PHPUnitAnnotationReflectionClass
         return $annotationList;
     }
 
-    /**
-     * @param string   $docBlock
-     * @param string   $pattern
-     * @param callable $callback
-     *
-     * @return array
-     */
-    private function parseAnnotations($docBlock, $pattern, callable $callback)
+    private function parseAnnotations(string $docBlock, string $pattern, callable $callback): array
     {
         $annotations = [];
         // Strip away the docblock header and footer to ease parsing of one line annotations
@@ -73,12 +62,7 @@ class PHPUnitAnnotationReflectionClass
         return $annotations;
     }
 
-    /**
-     * @param string $docBlock
-     *
-     * @return array
-     */
-    public function parseSimpleAnnotations($docBlock)
+    public function parseSimpleAnnotations(string $docBlock): array
     {
         return $this->parseAnnotations(
             $docBlock,
@@ -95,12 +79,7 @@ class PHPUnitAnnotationReflectionClass
         );
     }
 
-    /**
-     * @param string $docBlock
-     *
-     * @return array
-     */
-    public function parseFactoryAnnotations($docBlock)
+    public function parseFactoryAnnotations(string $docBlock): array
     {
         return $this->parseAnnotations(
             $docBlock,

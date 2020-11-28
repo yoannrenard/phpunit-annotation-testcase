@@ -4,10 +4,7 @@ namespace YoannRenard\PHPUnitAnnotation\TestCase\Two_Mocks_Inverted;
 
 class Foo
 {
-    /**
-     * @return string
-     */
-    public function dummy()
+    public function dummy(): string
     {
         return 'I am a Foo instance';
     }

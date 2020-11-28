@@ -8,30 +8,25 @@ use YoannRenard\PHPUnitAnnotation\TestCase\AnnotationTestCase;
 class MyClassTest extends AnnotationTestCase
 {
     /**
-     * @var  Foo|ObjectProphecy
+     * @var Foo|ObjectProphecy
      *
      * @mock \YoannRenard\PHPUnitAnnotation\TestCase\Two_Mocks\Foo
      */
     protected $foo1Mock;
 
     /**
-     * @var  Foo|ObjectProphecy
+     * @var Foo|ObjectProphecy
      *
      * @mock \YoannRenard\PHPUnitAnnotation\TestCase\Two_Mocks\Foo
      */
     protected $foo2Mock;
 
     /**
-     * @var Bar
-     *
      * @factory("\YoannRenard\PHPUnitAnnotation\TestCase\Two_Mocks\Bar", params={"foo1Mock", "foo2Mock"})
      */
-    protected $bar;
+    protected Bar $bar;
 
-    /**
-     * @return array
-     */
-    public function dummyDataProvider()
+    public function dummyDataProvider(): array
     {
         return [
             [
@@ -61,7 +56,7 @@ class MyClassTest extends AnnotationTestCase
      * @test
      * @dataProvider dummyDataProvider
      */
-    public function itReturnsAConcatenatedStringOfFoo1AndFoo2($foo1, $foo2, $expectedDummy)
+    public function itReturnsAConcatenatedStringOfFoo1AndFoo2(string $foo1, string $foo2, string $expectedDummy)
     {
         $this->foo1Mock->dummy()->willReturn($foo1);
         $this->foo2Mock->dummy()->willReturn($foo2);

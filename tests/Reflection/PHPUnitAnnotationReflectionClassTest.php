@@ -6,8 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class PHPUnitAnnotationReflectionClassTest extends TestCase
 {
-    /** @var PHPUnitAnnotationReflectionClass */
-    protected $phpUnitAnnotationReflectionClass;
+    protected PHPUnitAnnotationReflectionClass $phpUnitAnnotationReflectionClass;
 
     /**
      * @inheritdoc
@@ -21,10 +20,7 @@ class PHPUnitAnnotationReflectionClassTest extends TestCase
         $this->phpUnitAnnotationReflectionClass = new PHPUnitAnnotationReflectionClass($reflectedClass->reveal());
     }
 
-    /**
-     * @return array
-     */
-    public function parseFactoryAnnotationsDataProvider()
+    public function parseFactoryAnnotationsDataProvider(): array
     {
         return [
             [
@@ -169,7 +165,7 @@ class PHPUnitAnnotationReflectionClassTest extends TestCase
      * @test
      * @dataProvider parseFactoryAnnotationsDataProvider
      */
-    public function itReturns($docblock, $expectedResult)
+    public function itReturns(string $docblock, array $expectedResult)
     {
         $this->assertEquals(
             $expectedResult,
