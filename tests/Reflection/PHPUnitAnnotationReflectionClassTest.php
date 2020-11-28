@@ -177,12 +177,11 @@ class PHPUnitAnnotationReflectionClassTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     * @expectedException \InvalidArgumentException
-     */
+    /** @test */
     public function itThrowsAnExceptionAsTheAnnotationIsSetTwice()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->phpUnitAnnotationReflectionClass->parseFactoryAnnotations(<<<EOF
 /**
  * @var toto
