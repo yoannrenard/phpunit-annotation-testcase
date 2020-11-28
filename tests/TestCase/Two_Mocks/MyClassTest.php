@@ -26,29 +26,30 @@ class MyClassTest extends AnnotationTestCase
      */
     protected Bar $bar;
 
-    public function dummyDataProvider(): array
+    public function dummyDataProvider(): \Traversable
     {
-        return [
-            [
-                '',
-                '',
-                ' ',
-            ],
-            [
-                'a',
-                '',
-                'a ',
-            ],
-            [
-                '',
-                'b',
-                ' b',
-            ],
-            [
-                'a',
-                'b',
-                'a b',
-            ],
+        yield 'Empty strings' => [
+            '',
+            '',
+            ' ',
+        ];
+
+        yield '"a" + "" = "a "' => [
+            'a',
+            '',
+            'a ',
+        ];
+
+        yield '"" + "b" = " b"' => [
+            '',
+            'b',
+            ' b',
+        ];
+
+        yield '"a" + "b" = "a b"' => [
+            'a',
+            'b',
+            'a b',
         ];
     }
 

@@ -20,143 +20,161 @@ class PHPUnitAnnotationReflectionClassTest extends TestCase
         $this->phpUnitAnnotationReflectionClass = new PHPUnitAnnotationReflectionClass($reflectedClass->reveal());
     }
 
-    public function parseFactoryAnnotationsDataProvider(): array
+    public function parseFactoryAnnotationsDataProvider(): \Traversable
     {
-        return [
+        yield '@var toto' => [
+            '/**
+              * @var toto
+              */',
+            [],
+        ];
+
+        yield '@factory' => [
+            '/**
+              * @factory
+              */',
+            [],
+        ];
+
+        yield '@factory()' => [
+            '/**
+              * @factory()
+              */',
+            [],
+        ];
+
+        yield '@factory("stdClass")' => [
+            '/**
+              * @factory("stdClass")
+              */',
             [
-                '/**
-                  * @var toto
-                  */',
-                [],
+                'className' => 'stdClass',
+                'params'    => [],
             ],
+        ];
+
+        yield '@factory("/stdClass")' => [
+            '/**
+              * @factory("/stdClass")
+              */',
             [
-                '/**
-                  * @factory
-                  */',
-                [],
+                'className' => '/stdClass',
+                'params'    => [],
             ],
+        ];
+
+        yield '@factory("\stdClass")' => [
+            '/**
+              * @factory("\stdClass")
+              */',
             [
-                '/**
-                  * @factory()
-                  */',
-                [],
+                'className' => '\stdClass',
+                'params'    => [],
             ],
+        ];
+
+        yield '@factory("\stdClass", params)' => [
+            '/**
+              * @factory("\stdClass", params)
+              */',
+            [],
+        ];
+
+        yield '@factory("\stdClass", params={})' => [
+            '/**
+              * @factory("\stdClass", params={})
+              */',
             [
-                '/**
-                  * @factory("stdClass")
-                  */',
-                [
-                    'className' => 'stdClass',
-                    'params'    => [],
-                ],
+                'className' => '\stdClass',
+                'params'    => [],
             ],
+        ];
+
+        yield '@factory("\stdClass", params={toto})' => [
+            '/**
+              * @factory("\stdClass", params={toto})
+              */',
             [
-                '/**
-                  * @factory("/stdClass")
-                  */',
-                [
-                    'className' => '/stdClass',
-                    'params'    => [],
-                ],
+                'className' => '\stdClass',
+                'params'    => ['toto'],
             ],
+        ];
+
+        yield '@factory("\stdClass", {"toto"})' => [
+            '/**
+              * @factory("\stdClass", {"toto"})
+              */',
+            [],
+        ];
+
+        yield '@factory("\stdClass", params={toto})' =>    [
+            '/**
+              * @factory("\stdClass", params={toto})
+              */',
             [
-                '/**
-                  * @factory("\stdClass")
-                  */',
-                [
-                    'className' => '\stdClass',
-                    'params'    => [],
-                ],
+                'className' => '\stdClass',
+                'params'    => ['toto'],
             ],
+        ];
+
+        yield '@factory("\stdClass", params={"toto"})' => [
+            '/**
+              * @factory("\stdClass", params={"toto"})
+              */',
             [
-                '/**
-                  * @factory("\stdClass", params)
-                  */',
-                [],
+                'className' => '\stdClass',
+                'params'    => ['toto'],
             ],
+        ];
+
+        yield '@factory("\stdClass", params={"toto", "tata"})' => [
+            '/**
+              * @factory("\stdClass", params={"toto", "tata"})
+              */',
             [
-                '/**
-                  * @factory("\stdClass", params={})
-                  */',
-                [
-                    'className' => '\stdClass',
-                    'params'    => [],
-                ],
+                'className' => '\stdClass',
+                'params'    => ['toto', 'tata'],
             ],
+        ];
+
+        yield '@factory("\Namespace\stdClass", params={
+                 "toto",
+                 "tata"
+               })' => [
+            '/**
+              * @factory("\Namespace\stdClass", params={
+              *   "toto",
+              *   "tata"
+              * })
+              */',
             [
-                '/**
-                  * @factory("\stdClass", params={toto})
-                  */',
-                [
-                    'className' => '\stdClass',
-                    'params'    => ['toto'],
-                ],
+                'className' => '\Namespace\stdClass',
+                'params'    => ['toto', 'tata'],
             ],
+        ];
+        yield '@factory("\Namespace\stdClass", params={
+                 "toto",
+                 "tata"
+               })' => [
+            '/**
+              * @var toto
+              *
+              * @factory("\Namespace\stdClass", params={
+              *   "toto",
+              *   "tata"
+              * })
+              */',
             [
-                '/**
-                  * @factory("\stdClass", {"toto"})
-                  */',
-                [],
+                'className' => '\Namespace\stdClass',
+                'params'    => ['toto', 'tata'],
             ],
+        ];
+
+        yield '@factory("\Namespace\stdClass", params={"toto0", "tata"})' => [
+            '/** @factory("\Namespace\stdClass", params={"toto0", "tata"}) */',
             [
-                '/**
-                  * @factory("\stdClass", params={toto})
-                  */',
-                [
-                    'className' => '\stdClass',
-                    'params'    => ['toto'],
-                ],
-            ],
-            [
-                '/**
-                  * @factory("\stdClass", params={"toto"})
-                  */',
-                [
-                    'className' => '\stdClass',
-                    'params'    => ['toto'],
-                ],
-            ],
-            [
-                '/**
-                  * @factory("\stdClass", params={"toto", "tata"})
-                  */',
-                [
-                    'className' => '\stdClass',
-                    'params'    => ['toto', 'tata'],
-                ],
-            ],
-            [
-                '/**
-                  * @factory("\Namespace\stdClass", params={
-                  *   "toto",
-                  *   "tata"
-                  * })
-                  */',
-                [
-                    'className' => '\Namespace\stdClass',
-                    'params'    => ['toto', 'tata'],
-                ],
-            ],
-            [
-                '/**
-                  * @var toto
-                  *
-                  * @factory("\Namespace\stdClass", params={
-                  *   "toto",
-                  *   "tata"
-                  * })
-                  */',
-                [
-                    'className' => '\Namespace\stdClass',
-                    'params'    => ['toto', 'tata'],
-                ],
-            ],
-            [
-                '/** @factory("\Namespace\stdClass", params={"toto0", "tata"}) */',
-                [
-                    'className' => '\Namespace\stdClass',
-                    'params'    => ['toto0', 'tata'],
-                ],
+                'className' => '\Namespace\stdClass',
+                'params'    => ['toto0', 'tata'],
             ],
         ];
     }
