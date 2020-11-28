@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class PHPUnitAnnotationReflectionClassTest extends TestCase
 {
-    protected PHPUnitAnnotationReflectionClass $phpUnitAnnotationReflectionClass;
+    protected PHPUnitAnnotationReflectionClass $sut;
 
     /**
      * @inheritdoc
@@ -17,7 +17,7 @@ class PHPUnitAnnotationReflectionClassTest extends TestCase
 
         $reflectedClass = $this->prophesize(\ReflectionClass::class);
 
-        $this->phpUnitAnnotationReflectionClass = new PHPUnitAnnotationReflectionClass($reflectedClass->reveal());
+        $this->sut = new PHPUnitAnnotationReflectionClass($reflectedClass->reveal());
     }
 
     public function parseFactoryAnnotationsDataProvider(): \Traversable
@@ -187,7 +187,7 @@ class PHPUnitAnnotationReflectionClassTest extends TestCase
     {
         $this->assertEquals(
             $expectedResult,
-            $this->phpUnitAnnotationReflectionClass->parseFactoryAnnotations($docblock)
+            $this->sut->parseFactoryAnnotations($docblock)
         );
     }
 
@@ -196,7 +196,7 @@ class PHPUnitAnnotationReflectionClassTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        $this->phpUnitAnnotationReflectionClass->parseFactoryAnnotations(<<<EOF
+        $this->sut->parseFactoryAnnotations(<<<EOF
 /**
  * @var toto
  *

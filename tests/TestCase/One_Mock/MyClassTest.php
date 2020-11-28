@@ -12,18 +12,18 @@ class MyClassTest extends AnnotationTestCase
      *
      * @mock \YoannRenard\PHPUnitAnnotation\TestCase\One_Mock\Foo
      */
-    protected $fooMock;
+    protected $foo;
 
     /**
-     * @factory("\YoannRenard\PHPUnitAnnotation\TestCase\One_Mock\Bar", params={"fooMock"})
+     * @factory("\YoannRenard\PHPUnitAnnotation\TestCase\One_Mock\Bar", params={"foo"})
      */
-    protected Bar $bar;
+    protected Bar $sut;
 
     /** @test */
     public function itReturnsASpecificString(): void
     {
-        $this->fooMock->dummy()->willReturn('Foo');
+        $this->foo->dummy()->willReturn('Foo');
 
-        $this->assertEquals('Foo', $this->bar->dummy());
+        $this->assertEquals('Foo', $this->sut->dummy());
     }
 }

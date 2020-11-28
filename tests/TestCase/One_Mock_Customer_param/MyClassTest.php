@@ -12,9 +12,9 @@ class MyClassTest extends AnnotationTestCase
      *
      * @mock \YoannRenard\PHPUnitAnnotation\TestCase\One_Mock_Customer_param\Foo
      */
-    protected $fooMock;
+    protected $foo;
 
-    protected Bar $bar;
+    protected Bar $sut;
 
     /**
      * @inheritdoc
@@ -23,14 +23,14 @@ class MyClassTest extends AnnotationTestCase
     {
         parent::setUp();
 
-        $this->bar = new Bar($this->fooMock->reveal(), 'my suffix');
+        $this->sut = new Bar($this->foo->reveal(), 'my suffix');
     }
 
     /** @test */
     public function itReturnsASpecificString(): void
     {
-        $this->fooMock->dummy()->willReturn('Foo');
+        $this->foo->dummy()->willReturn('Foo');
 
-        $this->assertEquals('Foo my suffix', $this->bar->dummy());
+        $this->assertEquals('Foo my suffix', $this->sut->dummy());
     }
 }

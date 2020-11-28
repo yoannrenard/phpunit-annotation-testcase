@@ -9,11 +9,11 @@ class MyClassTest extends AnnotationTestCase
     /**
      * @factory("\YoannRenard\PHPUnitAnnotation\TestCase\No_Mock\Bar")
      */
-    protected Bar $bar;
+    protected Bar $sut;
 
     /** @test */
     public function itReturnsASpecificString(): void
     {
-        $this->assertEquals('I am a Bar instance', $this->bar->dummy());
+        $this->assertEquals('I am a Bar instance', $this->sut->dummy());
     }
 }

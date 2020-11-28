@@ -12,19 +12,19 @@ class MyClassTest extends AnnotationTestCase
      *
      * @mock \YoannRenard\PHPUnitAnnotation\TestCase\Two_Mocks\Foo
      */
-    protected $foo1Mock;
+    protected $foo1;
 
     /**
      * @var Foo|ObjectProphecy
      *
      * @mock \YoannRenard\PHPUnitAnnotation\TestCase\Two_Mocks\Foo
      */
-    protected $foo2Mock;
+    protected $foo2;
 
     /**
-     * @factory("\YoannRenard\PHPUnitAnnotation\TestCase\Two_Mocks\Bar", params={"foo1Mock", "foo2Mock"})
+     * @factory("\YoannRenard\PHPUnitAnnotation\TestCase\Two_Mocks\Bar", params={"foo1", "foo2"})
      */
-    protected Bar $bar;
+    protected Bar $sut;
 
     public function dummyDataProvider(): \Traversable
     {
@@ -59,9 +59,9 @@ class MyClassTest extends AnnotationTestCase
      */
     public function itReturnsAConcatenatedStringOfFoo1AndFoo2(string $foo1, string $foo2, string $expectedDummy): void
     {
-        $this->foo1Mock->dummy()->willReturn($foo1);
-        $this->foo2Mock->dummy()->willReturn($foo2);
+        $this->foo1->dummy()->willReturn($foo1);
+        $this->foo2->dummy()->willReturn($foo2);
 
-        $this->assertEquals($expectedDummy, $this->bar->dummy());
+        $this->assertEquals($expectedDummy, $this->sut->dummy());
     }
 }
