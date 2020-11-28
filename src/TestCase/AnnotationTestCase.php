@@ -4,8 +4,6 @@ namespace YoannRenard\PHPUnitAnnotation\TestCase;
 
 use PHPUnit\Framework\TestCase;
 use YoannRenard\PHPUnitAnnotation\Reflection\PHPUnitAnnotationReflectionClass;
-use YoannRenard\PHPUnitAnnotation\Reflection\PHPUnitFactoryReflectionProperty;
-use YoannRenard\PHPUnitAnnotation\Reflection\PHPUnitMockReflectionProperty;
 
 class AnnotationTestCase extends TestCase
 {
@@ -26,19 +24,17 @@ class AnnotationTestCase extends TestCase
         }
 
         // Mocks
-        /** @var PHPUnitMockReflectionProperty $mockReflectionProperty */
         foreach (self::$propertyAnnotationList[$className]->getMockProperties() as $mockReflectionProperty) {
-            $this->{$mockReflectionProperty->getName()} = $this->prophesize($mockReflectionProperty->getMockNamespace());
+            $this->{$mockReflectionProperty->name()} = $this->prophesize($mockReflectionProperty->mockNamespace());
         }
 
         // Classes
-        /** @var PHPUnitFactoryReflectionProperty $classReflectionProperty */
         foreach (self::$propertyAnnotationList[$className]->getFactoryProperties() as $classReflectionProperty) {
-            $classToTest = new \ReflectionClass($classReflectionProperty->getClassName());
+            $classToTest = new \ReflectionClass($classReflectionProperty->className());
 
-            $this->{$classReflectionProperty->getName()} = $classToTest->newInstanceArgs(array_map(function($mockNamespace) {
+            $this->{$classReflectionProperty->name()} = $classToTest->newInstanceArgs(array_map(function($mockNamespace) {
                 return $this->{$mockNamespace}->reveal();
-            }, $classReflectionProperty->getParamList()));
+            }, $classReflectionProperty->paramList()));
         }
     }
 }

@@ -20,7 +20,7 @@ class PHPUnitFactoryReflectionProperty extends AbstractPHPUnitReflectionProperty
         $this->paramList = $paramList;
     }
 
-    public function getClassName(): string
+    public function className(): string
     {
         return $this->className;
     }
@@ -28,7 +28,7 @@ class PHPUnitFactoryReflectionProperty extends AbstractPHPUnitReflectionProperty
     /**
      * @return string[]
      */
-    public function getParamList(): array
+    public function paramList(): array
     {
         return $this->paramList;
     }

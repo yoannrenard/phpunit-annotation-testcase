@@ -13,7 +13,7 @@ class PHPUnitMockReflectionProperty extends AbstractPHPUnitReflectionProperty
         $this->mockNamespace = $mockNamespace;
     }
 
-    public function getMockNamespace(): string
+    public function mockNamespace(): string
     {
         return $this->mockNamespace;
     }
