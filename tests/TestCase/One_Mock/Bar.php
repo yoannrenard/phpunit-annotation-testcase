@@ -6,9 +6,6 @@ class Bar
 {
     protected Foo $foo;
 
-    /**
-     * @param Foo $foo
-     */
     public function __construct(Foo $foo)
     {
         $this->foo = $foo;

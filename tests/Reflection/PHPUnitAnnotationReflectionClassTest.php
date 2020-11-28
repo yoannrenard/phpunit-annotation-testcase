@@ -183,7 +183,7 @@ class PHPUnitAnnotationReflectionClassTest extends TestCase
      * @test
      * @dataProvider parseFactoryAnnotationsDataProvider
      */
-    public function itReturns(string $docblock, array $expectedResult)
+    public function itReturns(string $docblock, array $expectedResult): void
     {
         $this->assertEquals(
             $expectedResult,
@@ -192,7 +192,7 @@ class PHPUnitAnnotationReflectionClassTest extends TestCase
     }
 
     /** @test */
-    public function itThrowsAnExceptionAsTheAnnotationIsSetTwice()
+    public function itThrowsAnExceptionAsTheAnnotationIsSetTwice(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 

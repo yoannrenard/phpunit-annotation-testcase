@@ -27,7 +27,7 @@ class MyClassTest extends AnnotationTestCase
     }
 
     /** @test */
-    public function itReturnsASpecificString()
+    public function itReturnsASpecificString(): void
     {
         $this->fooMock->dummy()->willReturn('Foo');
 

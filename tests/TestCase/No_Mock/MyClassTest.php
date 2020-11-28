@@ -12,7 +12,7 @@ class MyClassTest extends AnnotationTestCase
     protected Bar $bar;
 
     /** @test */
-    public function itReturnsASpecificString()
+    public function itReturnsASpecificString(): void
     {
         $this->assertEquals('I am a Bar instance', $this->bar->dummy());
     }

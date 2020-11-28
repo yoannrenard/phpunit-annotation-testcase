@@ -57,7 +57,7 @@ class MyClassTest extends AnnotationTestCase
      * @test
      * @dataProvider dummyDataProvider
      */
-    public function itReturnsAConcatenatedStringOfFoo1AndFoo2(string $foo1, string $foo2, string $expectedDummy)
+    public function itReturnsAConcatenatedStringOfFoo1AndFoo2(string $foo1, string $foo2, string $expectedDummy): void
     {
         $this->foo1Mock->dummy()->willReturn($foo1);
         $this->foo2Mock->dummy()->willReturn($foo2);
