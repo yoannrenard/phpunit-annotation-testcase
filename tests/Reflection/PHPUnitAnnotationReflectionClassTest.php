@@ -3,9 +3,12 @@
 namespace YoannRenard\PHPUnitAnnotation\Reflection;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class PHPUnitAnnotationReflectionClassTest extends TestCase
 {
+    use ProphecyTrait;
+
     protected PHPUnitAnnotationReflectionClass $sut;
 
     /**

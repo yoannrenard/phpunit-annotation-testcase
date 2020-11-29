@@ -3,10 +3,13 @@
 namespace YoannRenard\PHPUnitAnnotation\TestCase;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use YoannRenard\PHPUnitAnnotation\Reflection\PHPUnitAnnotationReflectionClass;
 
 class AnnotationTestCase extends TestCase
 {
+    use ProphecyTrait;
+
     /** @var PHPUnitAnnotationReflectionClass[] */
     protected static array $propertyAnnotationList;
 
