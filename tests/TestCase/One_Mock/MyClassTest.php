@@ -8,11 +8,9 @@ use YoannRenard\PHPUnitAnnotation\TestCase\AnnotationTestCase;
 class MyClassTest extends AnnotationTestCase
 {
     /**
-     * @var Foo|ObjectProphecy
-     *
      * @mock \YoannRenard\PHPUnitAnnotation\TestCase\One_Mock\Foo
      */
-    protected $foo;
+    protected Foo|ObjectProphecy $foo;
 
     /**
      * @factory("\YoannRenard\PHPUnitAnnotation\TestCase\One_Mock\Bar", params={"foo"})

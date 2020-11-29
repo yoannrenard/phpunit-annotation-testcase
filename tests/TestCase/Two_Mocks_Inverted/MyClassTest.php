@@ -13,18 +13,14 @@ class MyClassTest extends AnnotationTestCase
     protected Bar $sut;
 
     /**
-     * @var  Foo|ObjectProphecy
-     *
      * @mock \YoannRenard\PHPUnitAnnotation\TestCase\Two_Mocks_Inverted\Foo
      */
-    protected $foo1;
+    protected Foo|ObjectProphecy $foo1;
 
     /**
-     * @var  Foo|ObjectProphecy
-     *
      * @mock \YoannRenard\PHPUnitAnnotation\TestCase\Two_Mocks_Inverted\Foo
      */
-    protected $foo2;
+    protected Foo|ObjectProphecy $foo2;
 
     public function providesDummyData(): \Traversable
     {
