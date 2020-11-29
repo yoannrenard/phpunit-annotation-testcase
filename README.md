@@ -15,12 +15,19 @@ $> composer require --dev yoannrenard/phpunit-annotation-testcase
 ## Requirements
 
 * [Composer][composer]
-* PHP >=5.6
+* PHP >=8.0
 
 ## Run tests
 
 ```bash
 $> bin/phpunit
+```
+
+## Run using Docker
+
+```bash
+$> docker build -t pat .
+$> docker run --rm -it -v ${PWD}:/app pat sh
 ```
 
 ## Usage
