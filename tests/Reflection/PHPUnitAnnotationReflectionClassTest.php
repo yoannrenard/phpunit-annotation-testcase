@@ -110,16 +110,6 @@ class PHPUnitAnnotationReflectionClassTest extends TestCase
             [],
         ];
 
-        yield '@factory("\stdClass", params={toto})' =>    [
-            '/**
-              * @factory("\stdClass", params={toto})
-              */',
-            [
-                'className' => '\stdClass',
-                'params'    => ['toto'],
-            ],
-        ];
-
         yield '@factory("\stdClass", params={"toto"})' => [
             '/**
               * @factory("\stdClass", params={"toto"})
@@ -140,21 +130,6 @@ class PHPUnitAnnotationReflectionClassTest extends TestCase
             ],
         ];
 
-        yield '@factory("\Namespace\stdClass", params={
-                 "toto",
-                 "tata"
-               })' => [
-            '/**
-              * @factory("\Namespace\stdClass", params={
-              *   "toto",
-              *   "tata"
-              * })
-              */',
-            [
-                'className' => '\Namespace\stdClass',
-                'params'    => ['toto', 'tata'],
-            ],
-        ];
         yield '@factory("\Namespace\stdClass", params={
                  "toto",
                  "tata"
