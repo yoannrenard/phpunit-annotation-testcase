@@ -2,8 +2,9 @@
 
 namespace YoannRenard\PHPUnitAnnotation\Reflection;
 
-class PHPUnitFactoryReflectionProperty extends AbstractPHPUnitReflectionProperty
+class PHPUnitFactoryReflectionProperty
 {
+    protected string $name;
     protected string $className;
 
     /** @var string[] */
@@ -14,10 +15,14 @@ class PHPUnitFactoryReflectionProperty extends AbstractPHPUnitReflectionProperty
      */
     public function __construct(string $name, string $className, array $paramList = [])
     {
-        parent::__construct($name);
-
+        $this->name = $name;
         $this->className = $className;
         $this->paramList = $paramList;
+    }
+
+    public function name(): string
+    {
+        return $this->name;
     }
 
     public function className(): string

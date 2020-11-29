@@ -51,7 +51,6 @@ class PHPUnitAnnotationReflectionClass
 
     private function parseAnnotations(string $docBlock, string $pattern, callable $callback): array
     {
-        $annotations = [];
         // Strip away the docblock header and footer to ease parsing of one line annotations
         $docBlock = substr($docBlock, 3, -2);
 
@@ -59,7 +58,7 @@ class PHPUnitAnnotationReflectionClass
             return call_user_func($callback, $matches);
         }
 
-        return $annotations;
+        return [];
     }
 
     public function parseSimpleAnnotations(string $docBlock): array
@@ -67,7 +66,7 @@ class PHPUnitAnnotationReflectionClass
         return $this->parseAnnotations(
             $docBlock,
             '/@(?P<name>[A-Za-z_-]+)(?:[ \t]+(?P<value>.*?))?[ \t]*\r?$/m',
-            function (array $matches) {
+            static function (array $matches) {
                 $annotations = [];
                 $numMatches = count($matches[0]);
                 for ($i = 0; $i < $numMatches; ++$i) {
@@ -84,7 +83,7 @@ class PHPUnitAnnotationReflectionClass
         return $this->parseAnnotations(
             $docBlock,
             '/@factory\("(?P<className>[\/\\\\A-Za-z0-9_-]+?)"(, params={(?P<params>[, \"\n\t*A-Za-z0-9_-]*)})?\)?[ \t]*\r?$/m',
-            function (array $matches) {
+            static function (array $matches) {
                 if (1 != count($matches[0])) {
                     throw new \InvalidArgumentException();
                 }
@@ -101,7 +100,7 @@ class PHPUnitAnnotationReflectionClass
 
                 return [
                     'className' => $matches['className'][0],
-                    'params'    => !empty($params)? explode(',', $params):[],
+                    'params'    => !empty($params) ? explode(',', $params) : [],
                 ];
             }
         );
